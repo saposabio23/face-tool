@@ -35,6 +35,7 @@ btnContent.addEventListener("click", () => {
     svgMorphing(visage, visageNeutre, visageContent, duration);
     svgMorphing(levres, levresNeutre, levresContent, duration);
     svgMorphing(palais, palaisNeutre, palaisContent, duration);
+    svgMorphing(dents, dentsNeutre, dentsContent, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheNeutre,
@@ -52,6 +53,7 @@ btnContent.addEventListener("click", () => {
     svgMorphing(visage, visageContent, visageContent, duration);
     svgMorphing(levres, levresContent, levresContent, duration);
     svgMorphing(palais, palaisContent, palaisContent, duration);
+    svgMorphing(dents, dentsContent, dentsContent, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheContent,
@@ -69,6 +71,7 @@ btnContent.addEventListener("click", () => {
     svgMorphing(visage, visageTriste, visageContent, duration);
     svgMorphing(levres, levresTriste, levresContent, duration);
     svgMorphing(palais, palaisTriste, palaisContent, duration);
+    svgMorphing(dents, dentsTriste, dentsContent, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheTriste,
@@ -92,6 +95,7 @@ btnNeutre.addEventListener("click", () => {
     svgMorphing(visage, visageNeutre, visageNeutre, duration);
     svgMorphing(levres, levresNeutre, levresNeutre, duration);
     svgMorphing(palais, palaisNeutre, palaisNeutre, duration);
+    svgMorphing(dents, dentsNeutre, dentsNeutre, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheNeutre,
@@ -104,6 +108,7 @@ btnNeutre.addEventListener("click", () => {
     svgMorphing(visage, visageContent, visageNeutre, duration);
     svgMorphing(levres, levresContent, levresNeutre, duration);
     svgMorphing(palais, palaisContent, palaisNeutre, duration);
+    svgMorphing(dents, dentsContent, dentsNeutre, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheContent,
@@ -121,6 +126,7 @@ btnNeutre.addEventListener("click", () => {
     svgMorphing(visage, visageTriste, visageNeutre, duration);
     svgMorphing(levres, levresTriste, levresNeutre, duration);
     svgMorphing(palais, palaisTriste, palaisNeutre, duration);
+    svgMorphing(dents, dentsTriste, dentsNeutre, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheTriste,
@@ -139,6 +145,7 @@ btnTriste.addEventListener("click", () => {
     svgMorphing(visage, visageContent, visageTriste, duration);
     svgMorphing(levres, levresContent, levresTriste, duration);
     svgMorphing(palais, palaisContent, palaisTriste, duration);
+    svgMorphing(dents, dentsContent, dentsTriste, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheContent,
@@ -156,6 +163,7 @@ btnTriste.addEventListener("click", () => {
     svgMorphing(visage, visageNeutre, visageTriste, duration);
     svgMorphing(levres, levresNeutre, levresTriste, duration);
     svgMorphing(palais, palaisNeutre, palaisTriste, duration);
+    svgMorphing(dents, dentsNeutre, dentsTriste, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheNeutre,
@@ -168,6 +176,7 @@ btnTriste.addEventListener("click", () => {
     svgMorphing(visage, visageTriste, visageTriste, duration);
     svgMorphing(levres, levresTriste, levresTriste, duration);
     svgMorphing(palais, palaisTriste, palaisTriste, duration);
+    svgMorphing(dents, dentsTriste, dentsTriste, duration);
     svgMorphing(
       sourcilGauche,
       sourcilGaucheTriste,
