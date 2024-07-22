@@ -46,6 +46,8 @@ function chooseExpression() {
   if (actualExpression == "joie") {
     document.getElementById("actualExpressionTop").innerHTML = "Joie";
 
+    document.getElementById("actualExpression").innerHTML = "Joie";
+
     svgMorphing(visage, visageContent, visageContent);
     svgMorphing(levres, levresContent, levresContent);
     svgMorphing(palais, palaisContent, palaisContent);
@@ -69,8 +71,6 @@ function updateRecapNumbers() {
   var durationPose = parseInt(document.getElementById("durationPose").value);
 
   var durationTotal = durationTransition + durationPose;
-
-  document.getElementById("actualExpression").innerHTML = actualExpression;
 
   document.getElementById("durationTransitionRecap").innerHTML =
     durationTransition + " ms";
