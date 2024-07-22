@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>animation</title>
+    <title>Perlin Face Animation Tool</title>
     <link rel="icon" href="data:;base64,=">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/utility.css">
@@ -16,43 +16,39 @@
     <div class="main">
         <div class="header">
             <div>
-                <button class="btnNone">Perlin Face Animated Tool</button>
-                <button class="">i</button>
+                <button class="btnNone">Perlin Face Animation Tool</button>
+                <button id="btnInfo">i</button>
             </div>
 
             <div>
+                <button id="actualExpressionTop">-</button>
+                <!-- <button id="modeVue">Compact</button> -->
                 <button id="reset" class="btnRed">
                     <a href="">Réinitialiser</a></button>
             </div>
         </div>
 
         <div class="gallery panel">
-            <div class="galleryFace selectedFace">
+            <div class="galleryFace" data-expresion="joie">
                 <img src="assets/images/face-still.png" alt="">
                 <span>Joie</span>
             </div>
-            <div class="galleryFace">
+            <div class="galleryFace" data-expresion="joiedents">
                 <img src="assets/images/face-still.png" alt="">
                 <span>Joie + dents</span>
             </div>
-            <div class="galleryFace">
+            <div class="galleryFace" data-expresion="tristesse">
                 <img src="assets/images/face-still.png" alt="">
                 <span>Tristesse</span>
             </div>
-            <div class="galleryFace">
+            <div class="galleryFace" data-expresion="surprise">
                 <img src="assets/images/face-still.png" alt="">
                 <span>Surprise</span>
             </div>
-            <div class="galleryFace">
+            <div class="galleryFace" data-expresion="peur">
                 <img src="assets/images/face-still.png" alt="">
                 <span>Peur</span>
             </div>
-            <div class="galleryFace">
-                <img src="assets/images/face-still.png" alt="">
-                <span>Joie</span>
-            </div>
-
-
         </div>
 
         <div class="preview">
@@ -253,18 +249,20 @@
                 <div>
                     <div class="timeSelector">
                         <span>-</span>
-                        <div><input type="number" name="duration" id="duration" value="400"> mms</div>
+                        <div><input type="number" name="durationTransition" id="durationTransition" value="400"> mms
+                        </div>
                         <span>+</span>
                     </div>
                     Transition
                 </div>
 
-                <button class="btnViolet btnBig">Visualiser</button>
+                <button class="btnViolet btnBig" id="playBtn">Visualiser <span
+                          class="expsosant">(espace)</span></button>
 
                 <div>
                     <div class="timeSelector">
                         <span>-</span>
-                        <div><input type="number" name="duration" id="duration" value="400"> mms</div>
+                        <div><input type="number" name="durationPose" id="durationPose" value="400"> mms</div>
                         <span>+</span>
                     </div>
                     Pose
@@ -283,15 +281,15 @@
                 </div>
                 <div>
                     <span class="recapTitle">Pose</span>
-                    <span>XXX</span>
+                    <span id="durationPoseRecap">XXX</span>
                 </div>
                 <div>
                     <span class="recapTitle">Transition</span>
-                    <span>XXX</span>
+                    <span id="durationTransitionRecap">XXX</span>
                 </div>
                 <div>
                     <span class="recapTitle">Durée totale</span>
-                    <span>XXX</span>
+                    <span id="durationAllRecap">XXX</span>
                 </div>
             </div>
 

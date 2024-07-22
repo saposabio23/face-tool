@@ -17,174 +17,70 @@ function svgMorphing(target, from, to, duration) {
 }
 
 // EXPRESSION INFO TEXT
-var actualExpression = "neutre";
-console.log(actualExpression);
+var actualExpression = "-";
+var durationTransition = 0;
+var durationPose = 0;
 
-function updateExpressionInfo() {
-  document.getElementById("actualExpression").innerHTML = actualExpression;
+const galleryFaces = document.querySelectorAll(".galleryFace");
+
+for (let i = 0; i < galleryFaces.length; i++) {
+  galleryFaces[i].addEventListener("click", function () {
+    actualExpression = galleryFaces[i].getAttribute("data-expresion");
+    selectFace();
+    chooseExpression();
+    updateRecapNumbers();
+  });
 }
 
-updateExpressionInfo();
+function selectFace() {
+  galleryFacesAll = document.querySelectorAll(".galleryFace");
+  for (let i = 0; i < galleryFacesAll.length; i++) {
+    galleryFacesAll[i].classList.remove("selectedFace");
+  }
+  document
+    .querySelector("[data-expresion=" + actualExpression + "]")
+    .classList.add("selectedFace");
+}
 
-// DURATION+
+function chooseExpression() {
+  if (actualExpression == "joie") {
+    document.getElementById("actualExpressionTop").innerHTML = "Joie";
 
-// BUTTONS LAUNCH EXRPESSION
-btnContent.addEventListener("click", () => {
-  var duration = document.getElementById("duration").value;
-  if (actualExpression == "neutre") {
-    svgMorphing(visage, visageNeutre, visageContent, duration);
-    svgMorphing(levres, levresNeutre, levresContent, duration);
-    svgMorphing(palais, palaisNeutre, palaisContent, duration);
-    svgMorphing(dents, dentsNeutre, dentsContent, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheNeutre,
-      sourcilGaucheContent,
-      duration
-    );
-    svgMorphing(
-      sourcilDroit,
-      sourcilDroitNeutre,
-      sourcilDroitContent,
-      duration
-    );
+    svgMorphing(visage, visageContent, visageContent);
+    svgMorphing(levres, levresContent, levresContent);
+    svgMorphing(palais, palaisContent, palaisContent);
+    svgMorphing(dents, dentsContent, dentsContent);
+    svgMorphing(sourcilGauche, sourcilGaucheContent, sourcilGaucheContent);
+    svgMorphing(sourcilDroit, sourcilDroitContent, sourcilDroitContent);
   }
-  if (actualExpression == "content") {
-    svgMorphing(visage, visageContent, visageContent, duration);
-    svgMorphing(levres, levresContent, levresContent, duration);
-    svgMorphing(palais, palaisContent, palaisContent, duration);
-    svgMorphing(dents, dentsContent, dentsContent, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheContent,
-      sourcilGaucheContent,
-      duration
-    );
-    svgMorphing(
-      sourcilDroit,
-      sourcilDroitContent,
-      sourcilDroitContent,
-      duration
-    );
-  }
-  if (actualExpression == "triste") {
-    svgMorphing(visage, visageTriste, visageContent, duration);
-    svgMorphing(levres, levresTriste, levresContent, duration);
-    svgMorphing(palais, palaisTriste, palaisContent, duration);
-    svgMorphing(dents, dentsTriste, dentsContent, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheTriste,
-      sourcilGaucheContent,
-      duration
-    );
-    svgMorphing(
-      sourcilDroit,
-      sourcilDroitTriste,
-      sourcilDroitContent,
-      duration
-    );
-  }
-  actualExpression = "content";
-  updateExpressionInfo();
-});
+}
 
-btnNeutre.addEventListener("click", () => {
-  var duration = document.getElementById("duration").value;
-  if (actualExpression == "neutre") {
-    svgMorphing(visage, visageNeutre, visageNeutre, duration);
-    svgMorphing(levres, levresNeutre, levresNeutre, duration);
-    svgMorphing(palais, palaisNeutre, palaisNeutre, duration);
-    svgMorphing(dents, dentsNeutre, dentsNeutre, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheNeutre,
-      sourcilGaucheNeutre,
-      duration
-    );
-    svgMorphing(sourcilDroit, sourcilDroitNeutre, sourcilDroitNeutre, duration);
-  }
-  if (actualExpression == "content") {
-    svgMorphing(visage, visageContent, visageNeutre, duration);
-    svgMorphing(levres, levresContent, levresNeutre, duration);
-    svgMorphing(palais, palaisContent, palaisNeutre, duration);
-    svgMorphing(dents, dentsContent, dentsNeutre, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheContent,
-      sourcilGaucheNeutre,
-      duration
-    );
-    svgMorphing(
-      sourcilDroit,
-      sourcilDroitContent,
-      sourcilDroitNeutre,
-      duration
-    );
-  }
-  if (actualExpression == "triste") {
-    svgMorphing(visage, visageTriste, visageNeutre, duration);
-    svgMorphing(levres, levresTriste, levresNeutre, duration);
-    svgMorphing(palais, palaisTriste, palaisNeutre, duration);
-    svgMorphing(dents, dentsTriste, dentsNeutre, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheTriste,
-      sourcilGaucheNeutre,
-      duration
-    );
-    svgMorphing(sourcilDroit, sourcilDroitTriste, sourcilDroitNeutre, duration);
-  }
-  actualExpression = "neutre";
-  updateExpressionInfo();
-});
+function playAnimation() {
+  console.log("play");
+}
 
-btnTriste.addEventListener("click", () => {
-  var duration = document.getElementById("duration").value;
-  if (actualExpression == "content") {
-    svgMorphing(visage, visageContent, visageTriste, duration);
-    svgMorphing(levres, levresContent, levresTriste, duration);
-    svgMorphing(palais, palaisContent, palaisTriste, duration);
-    svgMorphing(dents, dentsContent, dentsTriste, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheContent,
-      sourcilGaucheTriste,
-      duration
-    );
-    svgMorphing(
-      sourcilDroit,
-      sourcilDroitContent,
-      sourcilDroitTriste,
-      duration
-    );
-  }
-  if (actualExpression == "neutre") {
-    svgMorphing(visage, visageNeutre, visageTriste, duration);
-    svgMorphing(levres, levresNeutre, levresTriste, duration);
-    svgMorphing(palais, palaisNeutre, palaisTriste, duration);
-    svgMorphing(dents, dentsNeutre, dentsTriste, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheNeutre,
-      sourcilGaucheTriste,
-      duration
-    );
-    svgMorphing(sourcilDroit, sourcilDroitNeutre, sourcilDroitTriste, duration);
-  }
-  if (actualExpression == "triste") {
-    svgMorphing(visage, visageTriste, visageTriste, duration);
-    svgMorphing(levres, levresTriste, levresTriste, duration);
-    svgMorphing(palais, palaisTriste, palaisTriste, duration);
-    svgMorphing(dents, dentsTriste, dentsTriste, duration);
-    svgMorphing(
-      sourcilGauche,
-      sourcilGaucheTriste,
-      sourcilGaucheTriste,
-      duration
-    );
-    svgMorphing(sourcilDroit, sourcilDroitTriste, sourcilDroitTriste, duration);
-  }
-  actualExpression = "triste";
-  updateExpressionInfo();
-});
+document.getElementById("playBtn").addEventListener("click", playAnimation);
+
+function updateRecapNumbers() {
+  var durationTransition = parseInt(
+    document.getElementById("durationTransition").value
+  );
+
+  var durationPose = parseInt(document.getElementById("durationPose").value);
+
+  var durationTotal = durationTransition + durationPose;
+
+  document.getElementById("actualExpression").innerHTML = actualExpression;
+
+  document.getElementById("durationTransitionRecap").innerHTML =
+    durationTransition + " ms";
+
+  document.getElementById("durationPoseRecap").innerHTML = durationPose + " ms";
+
+  document.getElementById("durationAllRecap").innerHTML = durationTotal + " ms";
+
+  // console.log(actualExpression);
+  // console.log(durationTransition);
+  // console.log(durationPose);
+  // console.log(durationTotal);
+}
