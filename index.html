@@ -4,304 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perlin Face Animation Tool</title>
-    <link rel="icon" href="data:;base64,=">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/utility.css">
-    <script src="assets/js/anime.min.js"></script>
+    <title>FaceToolVersions</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5rem;
+            margin: 20px;
+
+        }
+    </style>
 </head>
 
 <body>
+    <h3>Perlin Face Animation Tool</h3>
 
-    <div class="main">
-        <div class="header">
-            <div>
-                <button class="btnNone">Perlin Face Animation Tool</button>
-                <button id="btnInfo">i</button>
-            </div>
+    <ul style="max-width: 600px;">
+        <li><a href="v3/index.html">version 3</a> - 28/07/24
+            <p>Simplification des panneaux latéraux pour finalement tout placer sous les yeux, en minimisant les
+                informations affichées. La fenêtre d'exportation devient indépendante.</p>
+        </li>
 
-            <div>
-                <button id="actualExpressionTop">-</button>
-                <!-- <button id="modeVue">Compact</button> -->
-                <button id="reset" class="btnRed">
-                    <a href="">Réinitialiser</a></button>
-            </div>
-        </div>
+        <li><a href="v2/index.html">version 2</a> - 22/07/24
+            <p>Proposition d'une interface d'utilisation, avec des panneaux latéraux qui se déplient, laissant la place
+                centrale à la visualisation de l'animation.</p>
+        </li>
 
-        <div class="gallery panel">
-            <div class="galleryFace" data-expresion="joie">
-                <img src="assets/images/face-still.png" alt="">
-                <span>Joie</span>
-            </div>
-            <div class="galleryFace" data-expresion="tristesse">
-                <img src="assets/images/face-still.png" alt="">
-                <span>Tristesse</span>
-            </div>
-            <div class="galleryFace" data-expresion="joiedents">
-                <img src="assets/images/face-still.png" alt="">
-                <span>Joie + dents</span>
-            </div>
-            <div class="galleryFace" data-expresion="surprise">
-                <img src="assets/images/face-still.png" alt="">
-                <span>Surprise</span>
-            </div>
-            <div class="galleryFace" data-expresion="peur">
-                <img src="assets/images/face-still.png" alt="">
-                <span>Peur</span>
-            </div>
-        </div>
-
-        <div class="preview">
-
-            <div class="faces">
-                <div>
-                    <img src="assets/images/face-still.png" alt="">
-                </div>
-
-                <div id="face">
-
-                    <svg class="cheveux"
-                         height="100%"
-                         viewBox="0 0 300 400"
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path id="cheveux"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 24.55 176.35 L 33.55 183.35 L 49.55 90.35 L 106.02 73.35 L 197.55 73.35 L 252.55 90.35 L 265.55 183.35 L 275.55 177.35 L 285.12 185.19 L 272.13 66.94 L 204.74 2.69 L 94.76 2.69 L 23.55 67.35 L 13.36 184.96 L 24.55 176.35 Z M 35.55 228.35 L 30.55 232.35 L 20.55 225.59 L 12.77 191.69 L 10.55 217.35 L 52.67 284.66 L 35.55 228.35 Z M 285.78 191.2 L 280.55 224.35 L 270.55 232.35 L 264.62 228.35 L 248.48 284.66 L 288.55 216.35 L 285.78 191.2 Z" />
-                    </svg>
-
-                    <svg class="visage"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                              id="visage"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 35.34 228.35 L 58.15 303.35 L 122.5 366 L 178.5 366 L 242.34 305.35 L 264.42 228.35 L 270.34 232.35 L 280.34 224.35 L 286.34 186.35 L 275.34 177.35 L 265.34 183.35 L 252.34 90.35 L 197.34 73.35 L 105.81 73.35 L 49.34 90.35 L 33.34 183.35 L 24.34 176.35 L 11.34 186.35 L 20.34 225.59 L 30.34 232.35 L 35.34 228.35 Z" />
-                    </svg>
-
-                    <svg class="nez"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path id="nez"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 133.55 254.35 L 143.55 250.35 L 147.55 259.35 L 133.55 254.35 Z M 173.55 254.35 L 163.55 250.35 L 159.55 259.35 L 173.55 254.35 Z" />
-                    </svg>
-
-                    <svg class="sourcils"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path id="sourcilGauche"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 53.55 144.35 L 98.55 129.35 L 129.55 139.35 L 129.55 147.12 L 98.55 137.35 L 53.55 144.35 Z" />
-                    </svg>
-
-
-
-                    <svg class="sourcils"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path id="sourcilDroit"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 245.5 144.35 L 200.5 129.35 L 169.5 139.35 L 169.5 147.12 L 200.5 137.35 L 245.5 144.35 Z" />
-                    </svg>
-
-                    <svg class="palais"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path id="palais"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 128.5 306 L 140.5 305 L 163.5 305 L 174.5 306 L 165.5 307 L 137.5 307 L 128.5 306 Z" />
-                    </svg>
-
-
-                    <svg class="dents"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path id="dents"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 138.28 294.25 L 161.84 294.25 L 182.84 300 L 178.36 305.08 L 121.2 305.08 L 119.5 299 L 138.28 294.25 Z" />
-                    </svg>
-
-                    <svg class="levres"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path id="levres"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 173.31 285.25 L 130.64 285.25 L 110.64 307 L 135.54 324 L 166.64 324 L 192.83 307 Z M 166.14 307 L 136.64 307 L 128.64 306 L 140.5 305 L 163.5 305 L 174.64 306 Z" />
-                    </svg>
-
-
-                    <svg id="oeilGauche" class="oeil"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 124.55 182.35 L 97.55 166.35 L 66.55 181.35 L 96.55 193.35 L 124.55 182.35 Z" />
-                    </svg>
-
-                    <svg id="irisGauche" class="iris"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 96.28 170.17 C 93.629 170.17 91.084 171.224 89.209 173.099 C 87.334 174.974 86.28 177.519 86.28 180.17 C 86.28 182.821 87.334 185.366 89.209 187.241 C 91.084 189.116 93.629 190.17 96.28 190.17 C 98.931 190.17 101.476 189.116 103.351 187.241 C 105.226 185.366 106.28 182.821 106.28 180.17 C 106.28 177.519 105.226 174.974 103.351 173.099 C 101.476 171.224 98.931 170.17 96.28 170.17 Z" />
-                    </svg>
-
-                    <svg id="pupilleGauche" class="pupille"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 96.28 174.44 C 95.068 174.436 93.885 174.817 92.903 175.528 C 91.92 176.239 91.189 177.243 90.813 178.396 C 90.438 179.549 90.438 180.791 90.813 181.944 C 91.189 183.097 91.92 184.101 92.903 184.812 C 93.885 185.523 95.068 185.904 96.28 185.9 C 97.492 185.904 98.675 185.523 99.657 184.812 C 100.64 184.101 101.371 183.097 101.747 181.944 C 102.122 180.791 102.122 179.549 101.747 178.396 C 101.371 177.243 100.64 176.239 99.657 175.528 C 98.675 174.817 97.492 174.436 96.28 174.44 Z" />
-                    </svg>
-
-
-                    <svg id="oeilDroit" class="oeil"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 180.55 182.35 L 207.55 166.35 L 238.55 181.35 L 208.55 193.35 L 180.55 182.35 Z" />
-                    </svg>
-
-                    <svg id="irisDroit" class="iris"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 208.82 170.17 C 206.169 170.17 203.624 171.224 201.749 173.099 C 199.874 174.974 198.82 177.519 198.82 180.17 C 198.82 182.821 199.874 185.366 201.749 187.241 C 203.624 189.116 206.169 190.17 208.82 190.17 C 211.471 190.17 214.016 189.116 215.891 187.241 C 217.766 185.366 218.82 182.821 218.82 180.17 C 218.82 177.519 217.766 174.974 215.891 173.099 C 214.016 171.224 211.471 170.17 208.82 170.17 Z" />
-                    </svg>
-
-                    <svg id="pupilleDroit" class="pupille"
-                         height="100%"
-
-                         viewBox="0 0 300 400 "
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M 208.82 174.44 C 207.608 174.436 206.425 174.817 205.443 175.528 C 204.46 176.239 203.729 177.243 203.353 178.396 C 202.978 179.549 202.978 180.791 203.353 181.944 C 203.729 183.097 204.46 184.101 205.443 184.812 C 206.425 185.523 207.608 185.904 208.82 185.9 C 210.032 185.904 211.215 185.523 212.197 184.812 C 213.18 184.101 213.911 183.097 214.287 181.944 C 214.662 180.791 214.662 179.549 214.287 178.396 C 213.911 177.243 213.18 176.239 212.197 175.528 C 211.215 174.817 210.032 174.436 208.82 174.44 Z" />
-                    </svg>
-
-
-
-                </div>
-
-                <div>
-                    <img src="assets/images/face-still.png" alt="">
-                </div>
-            </div>
-
-            <div class="line"></div>
-
-            <div class="editor">
-
-                <div>
-                    <div class="timeSelector">
-                        <span>-</span>
-                        <div><input type="number" name="durationTransition" id="durationTransition" value="400"> mms
-                        </div>
-                        <span>+</span>
-                    </div>
-                    Transition
-                </div>
-
-                <button class="btnViolet btnBig" id="playBtn">Visualiser <span
-                          class="expsosant">(espace)</span></button>
-
-                <div>
-                    <div class="timeSelector">
-                        <span>-</span>
-                        <div><input type="number" name="durationPose" id="durationPose" value="400"> mms</div>
-                        <span>+</span>
-                    </div>
-                    Pose
-                </div>
-
-
-
-            </div>
-        </div>
-
-        <div class="recap panel">
-            <div class="recapBlocs">
-                <div>
-                    <span class="recapTitle">Emotion</span>
-                    <span id="actualExpression">-</span>
-                </div>
-                <div>
-                    <span class="recapTitle">Transition</span>
-                    <span id="durationTransitionRecap">XXX</span>
-                </div>
-                <div>
-                    <span class="recapTitle">Pose</span>
-                    <span id="durationPoseRecap">XXX</span>
-                </div>
-                <div>
-                    <span class="recapTitle">Durée totale</span>
-                    <span id="durationAllRecap">XXX</span>
-                </div>
-            </div>
-
-            <button class="btnGreen btnBig">Exporter</button>
-        </div>
-
-    </div>
-
-
-
-    <script src="assets/js/expressions.js"></script>
-    <script src="assets/js/script.js"></script>
+        <li><a href="">version 1</a> - 17/07/24
+            <p>Éléments de base établis, test des premières fonctionnalités. </p>
+        </li>
+    </ul>
 
 </body>
 
