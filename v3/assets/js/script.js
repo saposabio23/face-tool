@@ -24,7 +24,7 @@ function showInfoScreen() {
 
 function showExportScreen() {
   document.getElementById("exportScreen").style.display = "flex";
-  document.title = "[✅] Exporter?";
+  document.title = "✅ Exporter?";
 
   soonTo = "export";
   console.log(soonTo);
@@ -32,7 +32,7 @@ function showExportScreen() {
 
 function showResetScreen() {
   document.getElementById("resetScreen").style.display = "flex";
-  document.title = "[🚨] Réinitialiser?";
+  document.title = "🚨 Réinitialiser?";
 
   soonTo = "reset";
   console.log(soonTo);
@@ -42,7 +42,7 @@ function hideScreen() {
   document.getElementById("exportScreen").style.display = "none";
   document.getElementById("resetScreen").style.display = "none";
   document.getElementById("infoScreen").style.display = "none";
-  document.title = "[🤨] Visage Animé Perlin";
+  document.title = "🤨 Visage Animé Perlin";
   soonTo = "null";
 }
 

@@ -70,25 +70,29 @@ a:focus {
 }
 
 /* 🚧🚧🚧 FACE DESIGN 🚧🚧🚧 */
-.cheveux,
-.nez,
-.sourcils,
-.palais,
-.pupille {
+#cheveux,
+#sourcils,
+#palais,
+#pupille,
+#trousnez {
     fill: black;
 }
 
-.levres,
-.iris {
+#levres,
+#iris,
+#nez,
+#contourOeil {
     fill: #85493f;
 }
 
-.oeil,
-.dents {
+#oeil,
+#dents,
+#fondOeil {
     fill: white;
 }
 
-.visage {
+#visage,
+#cacheOeil {
     fill: #fab8a2;
 }
 
