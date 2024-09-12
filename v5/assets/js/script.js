@@ -22,6 +22,14 @@ function showInfoScreen() {
   console.log(soonTo);
 }
 
+function showTitles() {
+  var galleryTitles = document.querySelectorAll(".galleryFace span")
+
+  for (let i = 0; i < galleryTitles.length; i++) {
+    galleryTitles[i].classList.toggle("hidden");
+  }
+}
+
 function showExportScreen() {
   document.getElementById("exportScreen").style.display = "flex";
   document.title = "✅ Exporter?";
@@ -80,7 +88,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 // EXPRESSION INFO TEXT
-var actualExpression = "-";
+var actualExpression = "Neutre";
 var durationTransition = 0;
 var durationPose = 0;
 var durationDefault = 400;
@@ -132,10 +140,17 @@ function playAnimation() {
     document.getElementById("durationTransition").value
   );
   var durationPose = parseInt(document.getElementById("durationPose").value);
-  console.log("Transition: " + durationTransition);
-  console.log("Pose: " + durationPose);
 
-  console.log("playing");
+  var lineWidth = document.querySelector('.line').offsetWidth;
+
+  document.querySelector(".dot").animate([
+    { marginLeft: '0%' },
+    { marginLeft: '100%' }
+  ], {
+    duration: durationTransition + durationPose + durationTransition,
+    fill: 'forwards'
+  });
+
 
   svgMorphing(
     cheveux,
@@ -223,7 +238,6 @@ function playAnimation() {
     durationTransition
   );
   setTimeout(() => {
-    console.log("changin");
     svgMorphing(
       cheveux,
       svgPaths[cheveuxExpression],
@@ -310,6 +324,8 @@ function playAnimation() {
       durationTransition
     );
   }, durationTransition + durationPose);
+
+  document.getElementById("playBtn").classList.remove("btnPlaying");
 }
 
 function updateRecap() {
@@ -318,10 +334,9 @@ function updateRecap() {
   var durationTransition = parseInt(
     document.getElementById("durationTransition").value
   );
-
   var durationPose = parseInt(document.getElementById("durationPose").value);
 
-  var durationTotal = durationTransition + durationPose;
+  var durationTotal = durationTransition + durationPose + durationTransition;
 
   document.getElementById("durationTransitionRecap").innerHTML =
     durationTransition + " ms";
@@ -329,14 +344,18 @@ function updateRecap() {
   document.getElementById("durationPoseRecap").innerHTML = durationPose + " ms";
 
   document.getElementById("durationAllRecap").innerHTML = durationTotal + " ms";
-
-  // console.log(actualExpression);
-  // console.log(durationTransition);
-  // console.log(durationPose);
-  // console.log(durationTotal);
 }
 
-updateRecap();
+
+document.querySelector("#durationTransition").addEventListener("input", updateCounters);
+document.querySelector("#durationPose").addEventListener("input", updateCounters);
+
+function updateCounters(e) {
+  updateRecap();
+
+}
+
+updateRecap()
 
 
 

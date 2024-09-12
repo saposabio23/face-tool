@@ -13,11 +13,14 @@
 
 <body>
 
+    <span id="timer">3</span>
+
     <div class="main">
         <div class="header">
             <div>
                 <button class="btnNone">Perlin Face Animation Tool</button>
                 <button id="btnInfo" onclick="showInfoScreen()">i</button>
+                <button id="btnTitles" onclick="showTitles()">t</button>
             </div>
 
             <div>
@@ -28,6 +31,12 @@
 
         <div class="content">
             <div class="gallery panel">
+
+                <div class="galleryFace selectedFace" data-expresion="Neutre">
+                    <img src="assets/images/neutre.png" alt="">
+                    <span>Neutre</span>
+                </div>
+
                 <div class="galleryFace" data-expresion="Colere">
                     <img src="assets/images/colere.png" alt="">
                     <span>Colère</span>
@@ -66,6 +75,20 @@
                     <img src="assets/images/tristesse.png" alt="">
                     <span>Tristesse</span>
                 </div>
+
+                <div class="galleryFace" data-expresion="SourcilsMontees">
+                    <img src="assets/images/sourcils-montees.png" alt="">
+                    <span>Sourcils montées</span>
+                </div>
+
+                <div class="galleryFace" data-expresion="BoucheOuverte">
+                    <img src="assets/images/bouche-ouverte.png" alt="">
+                    <span>Bouche ouverte</span>
+                </div>
+
+
+
+
 
             </div>
 
@@ -219,26 +242,17 @@
 
 
                 <div class="line">
-                    <div class="transition1">
-                        <div class="indicator" id="indicatorTrans1"></div>
-                    </div>
-                    <div class="pose">
-                        <div class="indicator" id="indicatorPose"></div>
-
-                    </div>
-                    <div class="transition2">
-                        <div class="indicator" id="indicatorTrans2"></div>
-                    </div>
+                    <div class="dot"></div>
                 </div>
 
                 <div class="editor">
 
                     <div>
                         <div class="timeSelector">
-                            <span>-</span>
-                            <div><input type="number" name="durationTransition" id="durationTransition" value="400"> mms
+                            <div><input type="number" inputmode="numeric" name="durationTransition"
+                                       id="durationTransition"
+                                       value="400"> mms
                             </div>
-                            <span>+</span>
                         </div>
                         Transition
                     </div>
@@ -248,9 +262,8 @@
 
                     <div>
                         <div class="timeSelector">
-                            <span>-</span>
-                            <div><input type="number" name="durationPose" id="durationPose" value="800"> mms</div>
-                            <span>+</span>
+                            <div><input type="number" inputmode="numeric" name="durationPose" id="durationPose"
+                                       value="800"> mms</div>
                         </div>
                         Pose
                     </div>
@@ -268,7 +281,7 @@
         <div class="recapBlocs">
             <div>
                 <span class="recapTitle">Emotion</span>
-                <span id="actualExpression">-</span>
+                <span id="actualExpression">Neutre</span>
             </div>
             <div>
                 <span class="recapTitle">Transition</span>
@@ -286,8 +299,16 @@
         <div>
             <button class="btnViolet" id="escapeBtnExport" onclick="hideScreen()">
                 Fermer <span>esc</span></button>
-            <button class="btnGreen">Exporter <span>↵</span></button>
+            <button id="startButton" class="btnGreen">Exporter <span>↵</span></button>
         </div>
+
+        <video id="preview" width="300" height="200" autoplay muted style="display: none;"></video>
+        <video id="recording" width="300" height="200" controls style="display: none;"></video>
+
+        <a id="downloadButton" class="button" style="display: none;">
+            Download
+        </a>
+
     </div>
 
     <div id="resetScreen" class="floatingScreen">
@@ -333,6 +354,7 @@
 
     <script src="assets/js/expressions.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/video.js"></script>
 
 </body>
 
