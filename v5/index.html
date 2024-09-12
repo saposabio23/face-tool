@@ -4,11 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🤨 Visage Animé Perlin</title>
-    <link rel="icon" href="data:;base64,=">
+    <title>Visage Animé Perlin</title>
+    <!-- <link rel="icon" href="data:;base64,="> -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/utility.css">
     <script src="assets/js/anime.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -18,14 +28,22 @@
     <div class="main">
         <div class="header">
             <div>
-                <button class="btnNone">Perlin Face Animation Tool</button>
-                <button id="btnInfo" onclick="showInfoScreen()">i</button>
-                <button id="btnTitles" onclick="showTitles()">t</button>
+                <div class="btnNone"><img src="assets/icons/visage-anime.png" alt=""></div>
+                <button id="btnInfo" onclick="showInfoScreen()"><img src="assets/icons/info.svg" alt=""
+                         style="filter: invert(47%) sepia(0%) saturate(112%) hue-rotate(282deg) brightness(100%) contrast(92%);"></button>
+                <button id="btnTitles" onclick="showTitles()"><img src="assets/icons/title.svg" alt=""
+                         style="filter: invert(47%) sepia(0%) saturate(112%) hue-rotate(282deg) brightness(100%) contrast(92%);"></button>
             </div>
 
             <div>
-                <button id="resetBtn" class="btnRed" onclick="showResetScreen()">Réinitialiser <span>r</span></button>
-                <button id="exportBtn" class="btnGreen" onclick="showExportScreen()">Exporter <span>e</span></button>
+                <button id="resetBtn" class="btnRed" onclick="showResetScreen()"><img src="assets/icons/trash.svg"
+                         alt=""
+                         style="filter: invert(39%) sepia(93%) saturate(535%) hue-rotate(324deg) brightness(105%) contrast(98%);">
+                    <span>r</span></button>
+                <button id="exportBtn" class="btnGreen" onclick="showExportScreen()"><img src="assets/icons/export.svg"
+                         alt=""
+                         style="filter: invert(25%) sepia(98%) saturate(6148%) hue-rotate(107deg) brightness(100%) contrast(103%);">
+                    <span>e</span></button>
             </div>
         </div>
 
@@ -251,19 +269,19 @@
                         <div class="timeSelector">
                             <div><input type="number" inputmode="numeric" name="durationTransition"
                                        id="durationTransition"
-                                       value="400"> mms
+                                       value="400"> ms
                             </div>
                         </div>
                         Transition
                     </div>
 
-                    <button class="btnViolet" id="playBtn" onclick="playAnimation()">Visualiser <span
+                    <button class="btnViolet" id="playBtn" onclick="playAnimation()">Visualiser<span
                               class="expsosant">espace</span></button>
 
                     <div>
                         <div class="timeSelector">
                             <div><input type="number" inputmode="numeric" name="durationPose" id="durationPose"
-                                       value="800"> mms</div>
+                                       value="800"> ms</div>
                         </div>
                         Pose
                     </div>
@@ -322,7 +340,7 @@
     </div>
 
     <div id="infoScreen" class="floatingScreen">
-        <h2> 🤨 Visage Animé Perlin</h2>
+        <img src="assets/icons/visage-anime.png" alt="" style="height: 40px;">
 
         <div>
             <p>Ce projet...</p>
@@ -339,7 +357,7 @@
             <div>
                 <u>Dévélopement de l'outil web</u>
                 <span>
-                    <a href="">
+                    <a href="https://pablo.energy">
                         Pablo Moreno</a>, reprennant le visage de <a href="">Ken Perlin</a></span>
             </div>
 

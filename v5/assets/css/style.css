@@ -152,21 +152,23 @@ button:active {
 
 button>span {
     position: absolute;
-    top: 2px;
+    bottom: 2px;
     right: 6px;
-    font-size: 50%;
+    font-size: 60%;
     opacity: .7;
 }
 
 .btnNone {
-    background-color: hsla(0, 0%, 0%, 0.1) !important;
-    border-color: hsla(0, 0%, 0%, 0.1) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    display: flex;
+    align-items: center;
 }
 
-.btnNone:hover {
-    cursor: inherit;
-    color: hsla(0, 0%, 0%, 0.6);
+.btnNone img {
+    height: 35px;
 }
+
 
 #btnInfo {
     /* aspect-ratio: 1; */
@@ -179,6 +181,7 @@ button>span {
     border-color: var(--color-purple);
     color: var(--color-purple);
     transition: var(--trans-fast);
+
 }
 
 .btnViolet:hover {
@@ -250,6 +253,11 @@ button>span {
 .header>div {
     display: flex;
     gap: var(--spacing);
+}
+
+.header button:hover img,
+.btnViolet:hover img {
+    filter: invert(98%) sepia(0%) saturate(7466%) hue-rotate(112deg) brightness(119%) contrast(107%) !important;
 }
 
 
@@ -461,6 +469,7 @@ button>span {
 
 .recapTitle {
     font-size: var(--text-normal) !important;
+    color: rgb(159, 159, 159);
 }
 
 .recapBlocs span {

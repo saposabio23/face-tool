@@ -71,7 +71,6 @@ document.addEventListener("keydown", function (event) {
   } else if (event.code === "Enter") {
     event.preventDefault();
     if (soonTo == "export") {
-      alert("Export en cours!");
       clickButton("startButton");
     } else if (soonTo == "reset") {
       document.getElementById("btnReload").click();
@@ -316,9 +315,21 @@ function playAnimation() {
       svgPaths["dentsNeutre"],
       durationTransition
     );
+
+    setTimeout(() => {
+      document.querySelector(".dot").animate([
+        { marginLeft: '100%' },
+        { marginLeft: '0%' }
+      ], {
+        duration: 0,
+        fill: 'forwards'
+      });
+    }, durationTransition + 200);
+
   }, durationTransition + durationPose);
 
-  document.getElementById("playBtn").classList.remove("btnPlaying");
+
+
 }
 
 function updateRecap() {

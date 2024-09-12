@@ -32,18 +32,29 @@ function startRecording(stream, lengthInMS) {
 startButton.addEventListener("click", async function () {
     try {
         // Get the media stream
-        const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+        const stream = await navigator.mediaDevices.getDisplayMedia({
+            video: true,
+            audio: false,
+            optional: [
+                { minWidth: 320 },
+                { minWidth: 640 },
+                { minWidth: 1024 },
+                { minWidth: 1280 },
+                { minWidth: 1920 },
+                { minWidth: 2560 }
+            ]
+        });
 
         // Update the UI elements
         document.querySelector(".gallery").style.display = "none";
-        // document.querySelector(".line").style.display = "none";
+        document.querySelector(".line").style.display = "none";
         document.querySelector(".editor").style.display = "none";
         document.querySelector(".header").style.display = "none";
         document.querySelector(".content").style.height = "100%";
         document.querySelector(".preview").style.opacity = "0.5";
 
         hideScreen();
-        openFullscreen()
+        // openFullscreen()
 
         // Check time to record
         var durationTransition = parseInt(
@@ -86,20 +97,24 @@ startButton.addEventListener("click", async function () {
                                 // Start recording after the countdown
                                 startRecording(preview.captureStream(), recordingTimeMS).then(recordedChunks => {
                                     // Handle recorded video
-                                    const recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+                                    const recordedBlob = new Blob(recordedChunks, {
+                                        type: "video/mp4",
+                                        mimeType: 'video/mp4'
+                                    });
+                                    recordedBlob.mimeType = 'video/mp4';
                                     recording.src = URL.createObjectURL(recordedBlob);
                                     downloadButton.href = recording.src;
-                                    downloadButton.download = "Visage" + actualExpression + "_t" + durationTransition + "-p" + durationPose + ".webm";
+                                    downloadButton.download = "Visage" + actualExpression + "_t" + durationTransition + "-p" + durationPose + ".mp4";
                                     downloadButton.click();
 
 
                                     document.querySelector(".gallery").style.display = "grid";
-                                    // document.querySelector(".line").style.display = "none";
+                                    document.querySelector(".line").style.display = "flex";
                                     document.querySelector(".editor").style.display = "flex";
                                     document.querySelector(".header").style.display = "flex";
                                     document.querySelector(".content").style.height = "calc(100% - 70px)";
-                                    alert("Visage" + actualExpression + "_t" + durationTransition + "-p" + durationPose + ".webm téléchargé!");
-                                    closeFullscreen()
+                                    alert("Visage" + actualExpression + "_t" + durationTransition + "-p" + durationPose + ".mp4 téléchargé!");
+                                    // closeFullscreen()
                                 });
                             }, 80);
                         }, 1000);  // After "1"
