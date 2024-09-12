@@ -16,15 +16,12 @@ var soonTo = null;
 
 function showInfoScreen() {
   document.getElementById("infoScreen").style.display = "flex";
-  document.title = "❓ Info";
-
   soonTo = "info";
   console.log(soonTo);
 }
 
 function showTitles() {
-  var galleryTitles = document.querySelectorAll(".galleryFace span")
-
+  var galleryTitles = document.querySelectorAll(".galleryFace span");
   for (let i = 0; i < galleryTitles.length; i++) {
     galleryTitles[i].classList.toggle("hidden");
   }
@@ -32,16 +29,12 @@ function showTitles() {
 
 function showExportScreen() {
   document.getElementById("exportScreen").style.display = "flex";
-  document.title = "✅ Exporter?";
-
   soonTo = "export";
   console.log(soonTo);
 }
 
 function showResetScreen() {
   document.getElementById("resetScreen").style.display = "flex";
-  document.title = "🚨 Réinitialiser?";
-
   soonTo = "reset";
   console.log(soonTo);
 }
@@ -50,7 +43,6 @@ function hideScreen() {
   document.getElementById("exportScreen").style.display = "none";
   document.getElementById("resetScreen").style.display = "none";
   document.getElementById("infoScreen").style.display = "none";
-  document.title = "🤨 Visage Animé Perlin";
   soonTo = "null";
 }
 
@@ -80,6 +72,7 @@ document.addEventListener("keydown", function (event) {
     event.preventDefault();
     if (soonTo == "export") {
       alert("Export en cours!");
+      clickButton("startButton");
     } else if (soonTo == "reset") {
       document.getElementById("btnReload").click();
     } else if (soonTo == "null") {
