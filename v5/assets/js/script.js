@@ -17,7 +17,6 @@ var soonTo = null;
 function showInfoScreen() {
   document.getElementById("infoScreen").style.display = "flex";
   soonTo = "info";
-  console.log(soonTo);
 }
 
 function showTitles() {
@@ -27,16 +26,22 @@ function showTitles() {
   }
 }
 
+function changeBg() {
+  colorPicker.click();
+  document.getElementById('colorPicker').addEventListener('input', function () {
+    document.body.style.backgroundColor = colorPicker.value;
+  });
+}
+
+
 function showExportScreen() {
   document.getElementById("exportScreen").style.display = "flex";
   soonTo = "export";
-  console.log(soonTo);
 }
 
 function showResetScreen() {
   document.getElementById("resetScreen").style.display = "flex";
   soonTo = "reset";
-  console.log(soonTo);
 }
 
 function hideScreen() {
@@ -108,7 +113,6 @@ function chooseExpression() {
   setTimeout(function () {
     document.getElementById("face").classList.remove("changeFace");
   }, 500);
-  console.log("Emotio nselectionée: " + actualExpression)
 }
 
 

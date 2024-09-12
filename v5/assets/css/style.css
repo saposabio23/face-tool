@@ -41,6 +41,14 @@ body {
     overflow: hidden;
 }
 
+.bgGrey {
+    background-color: hsla(0, 0%, 0%, 0.3);
+}
+
+#colorPicker {
+    display: none;
+}
+
 svg {
     position: absolute;
 }
@@ -303,9 +311,9 @@ button>span {
     box-sizing: border-box;
     position: absolute;
     height: 15px;
-    width: 15px;
+    width: 5px;
     background-color: var(--color-purple);
-    border-radius: 999px;
+    /* border-radius: 999px; */
     top: 50%;
     left: 0;
     transform: translate(-50%, -50%);
@@ -322,6 +330,7 @@ button>span {
     width: 100%;
     justify-content: center;
     box-sizing: border-box;
+
 }
 
 
@@ -330,7 +339,6 @@ button>span {
     flex-direction: column-reverse;
     align-items: center;
     gap: 6px;
-    color: rgb(159, 159, 159);
 }
 
 .timeSelector {
@@ -412,6 +420,7 @@ button>span {
     background-color: white;
     align-items: center;
     justify-content: center;
+    border-radius: var(--border-small);
 }
 
 .galleryFace:hover {
@@ -452,24 +461,27 @@ button>span {
 .recapBlocs {
     gap: var(--spacing) !important;
     display: flex;
-    /*! flex-direction: column; */
     width: fit-content;
 }
 
 .recapBlocs div {
-    background-color: var(--color-gray);
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: var(--border-small);
     gap: var(--spacing);
     justify-content: center;
+}
+
+.recapBlocs>div>span:nth-child(2) {
     padding: var(--spacing);
+    border-radius: var(--border-small);
+    background-color: var(--color-gray);
+
 }
 
 .recapTitle {
     font-size: var(--text-normal) !important;
-    color: rgb(159, 159, 159);
+    opacity: .8;
 }
 
 .recapBlocs span {
@@ -534,8 +546,51 @@ button>span {
     gap: 3px;
 }
 
-#infoScreen>div>div a:hover {
+#infoScreen>div>div a {
     text-decoration: underline !important;
 }
 
-#infoScreen span {}
+
+#infoScreen>div>div a:hover {
+    text-decoration: none !important;
+}
+
+
+
+.notifExport {
+    position: fixed;
+    top: 0;
+    left: 50vw;
+    transform: translate(-50%, -100%);
+    background-color: var(--color-gray);
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
+    ;
+    transition: all ease-in-out var(--trans-slow);
+
+}
+
+.notifShow {
+    animation: downNotif 3s;
+}
+
+@keyframes downNotif {
+    0% {
+        top: 0;
+        transform: translate(-50%, -100%);
+    }
+
+    40% {
+        top: var(--spacing);
+        transform: translate(-50%, 0%);
+    }
+
+    90% {
+        top: var(--spacing);
+        transform: translate(-50%, 0%);
+    }
+
+    100% {
+        top: 0;
+        transform: translate(-50%, -100%);
+    }
+}

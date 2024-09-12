@@ -31,18 +31,10 @@ function startRecording(stream, lengthInMS) {
 
 startButton.addEventListener("click", async function () {
     try {
-        // Get the media stream
+        // Get the media stream with simplified constraints
         const stream = await navigator.mediaDevices.getDisplayMedia({
-            video: true,
-            audio: false,
-            optional: [
-                { minWidth: 320 },
-                { minWidth: 640 },
-                { minWidth: 1024 },
-                { minWidth: 1280 },
-                { minWidth: 1920 },
-                { minWidth: 2560 }
-            ]
+            video: { width: { ideal: 1920 }, height: { ideal: 1080 } },
+            audio: false
         });
 
         // Update the UI elements
@@ -51,35 +43,36 @@ startButton.addEventListener("click", async function () {
         document.querySelector(".editor").style.display = "none";
         document.querySelector(".header").style.display = "none";
         document.querySelector(".content").style.height = "100%";
-        document.querySelector(".preview").style.opacity = "0.5";
+        document.querySelector(".preview").style.opacity = "0.3";
+        document.body.style.cursor = 'none';
+
 
         hideScreen();
-        // openFullscreen()
+        openFullscreen()
 
         // Check time to record
         var durationTransition = parseInt(
             document.getElementById("durationTransition").value
         );
         var durationPose = parseInt(document.getElementById("durationPose").value);
-
         var durationTotal = durationTransition + durationPose + durationTransition;
 
         let recordingTimeMS = durationTotal + 80;
 
-        console.log(recordingTimeMS)
+        document.getElementById("timer").innerHTML = "5";
+        document.getElementById("timer").style.display = "block";
 
         // Set up the video preview
         preview.srcObject = stream;
-        downloadButton.href = stream;
         preview.captureStream = preview.captureStream || preview.mozCaptureStream;
 
         // Wait until the video is playing
         await new Promise(resolve => (preview.onplaying = resolve));
 
         // Start countdown timer before recording
-        document.getElementById("timer").innerHTML = "5";
-        document.getElementById("timer").style.display = "block";
 
+
+        // Countdown logic
         setTimeout(function () {
             document.getElementById("timer").innerHTML = "4";
             setTimeout(function () {
@@ -97,24 +90,29 @@ startButton.addEventListener("click", async function () {
                                 // Start recording after the countdown
                                 startRecording(preview.captureStream(), recordingTimeMS).then(recordedChunks => {
                                     // Handle recorded video
-                                    const recordedBlob = new Blob(recordedChunks, {
-                                        type: "video/mp4",
-                                        mimeType: 'video/mp4'
-                                    });
-                                    recordedBlob.mimeType = 'video/mp4';
-                                    recording.src = URL.createObjectURL(recordedBlob);
-                                    downloadButton.href = recording.src;
-                                    downloadButton.download = "Visage" + actualExpression + "_t" + durationTransition + "-p" + durationPose + ".mp4";
+                                    const recordedBlob = new Blob(recordedChunks, { type: "video/mp4" });
+                                    const recordingUrl = URL.createObjectURL(recordedBlob);
+                                    recording.src = recordingUrl;
+                                    downloadButton.href = recordingUrl;
+                                    downloadButton.download = "Visage" + actualExpression + "-" + durationTransition + "_" + durationPose + ".mp4";
                                     downloadButton.click();
 
-
+                                    // Reset UI elements after recording
                                     document.querySelector(".gallery").style.display = "grid";
                                     document.querySelector(".line").style.display = "flex";
                                     document.querySelector(".editor").style.display = "flex";
                                     document.querySelector(".header").style.display = "flex";
                                     document.querySelector(".content").style.height = "calc(100% - 70px)";
-                                    alert("Visage" + actualExpression + "_t" + durationTransition + "-p" + durationPose + ".mp4 téléchargé!");
-                                    // closeFullscreen()
+                                    document.body.style.cursor = 'inherit';
+                                    closeFullscreen()
+
+                                    document.querySelector(".notifExport").innerHTML = "Visage" + actualExpression + "-" + durationTransition + "_" + durationPose + ".mp4 téléchargé!"
+                                    document.querySelector(".notifExport").classList.add("notifShow")
+                                    setTimeout(() => {
+                                        document.querySelector(".notifExport").classList.remove("notifShow")
+                                    }, 3000);
+
+
                                 });
                             }, 80);
                         }, 1000);  // After "1"
@@ -125,7 +123,6 @@ startButton.addEventListener("click", async function () {
     } catch (error) {
         console.error("An error occurred while recording the video:", error);
     }
-
 }, false);
 
 

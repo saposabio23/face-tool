@@ -23,7 +23,14 @@
 
 <body>
 
-    <span id="timer">3</span>
+
+    <span id="timer"></span>
+
+    <button class="notifExport">...</button>
+
+    <video id="preview" width="300" height="200" autoplay muted style="position: absolute; opacity: 0;"></video>
+    <video id="recording" width="300" height="200" controls style="position: absolute; opacity: 0;"></video>
+
 
     <div class="main">
         <div class="header">
@@ -33,6 +40,11 @@
                          style="filter: invert(47%) sepia(0%) saturate(112%) hue-rotate(282deg) brightness(100%) contrast(92%);"></button>
                 <button id="btnTitles" onclick="showTitles()"><img src="assets/icons/title.svg" alt=""
                          style="filter: invert(47%) sepia(0%) saturate(112%) hue-rotate(282deg) brightness(100%) contrast(92%);"></button>
+                <button id="btnBg" onclick="changeBg()"><img src="assets/icons/bg.svg" alt=""
+                         style="filter: invert(47%) sepia(0%) saturate(112%) hue-rotate(282deg) brightness(100%) contrast(92%);display: inline-flex; align-items: center;">
+                    <input type="color" id="colorPicker" value="#ffffff">
+                </button>
+
             </div>
 
             <div>
@@ -320,9 +332,6 @@
             <button id="startButton" class="btnGreen">Exporter <span>↵</span></button>
         </div>
 
-        <video id="preview" width="300" height="200" autoplay muted style="display: none;"></video>
-        <video id="recording" width="300" height="200" controls style="display: none;"></video>
-
         <a id="downloadButton" class="button" style="display: none;">
             Download
         </a>
@@ -345,20 +354,21 @@
         <div>
             <p>Ce projet...</p>
             <div>
-                <u>Doctorant</u>
-                <span>Nolwen Berton</span>
+                <span>Doctorant</span>
+                <b>Nolwen Berton</b>
             </div>
 
             <div>
-                <u>Tuteur</u>
-                <span>Luc ...</span>
+                <span>Tuteur</span>
+                <b>Luc ...</b>
             </div>
 
             <div>
-                <u>Dévélopement de l'outil web</u>
-                <span>
-                    <a href="https://pablo.energy">
-                        Pablo Moreno</a>, reprennant le visage de <a href="">Ken Perlin</a></span>
+                <span>Dévélopement de l'outil web</span>
+                <span><b>
+                        <a href="https://pablo.energy">
+                            Pablo Moreno</a></b>, reprennant le visage de <a href="http://kenperlin.com/face/">Ken
+                        Perlin</a></span>
             </div>
 
         </div>
