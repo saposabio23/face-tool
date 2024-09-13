@@ -564,7 +564,6 @@ button>span {
     transform: translate(-50%, -100%);
     background-color: var(--color-gray);
     box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
-    ;
     transition: all ease-in-out var(--trans-slow);
 
 }
