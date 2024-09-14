@@ -22,7 +22,7 @@
     --shadow-soft: 0 0 10px hsla(0, 0%, 0%, 0.1);
     --shadow-hard: 0 0 10px hsla(0, 0%, 0%, 0.1);
 
-    --blur-soft: blur(24px);
+    --blur-soft: blur(36px);
 
 
     --text-big: 24px;
@@ -534,7 +534,7 @@ button>span {
     text-align: left;
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 500px;
     padding: var(--spacing);
     color: var(--color-grey);
 }
@@ -546,12 +546,12 @@ button>span {
     gap: 3px;
 }
 
-#infoScreen>div>div a {
+#infoScreen a {
     text-decoration: underline !important;
 }
 
 
-#infoScreen>div>div a:hover {
+#infoScreen a:hover {
     text-decoration: none !important;
 }
 
@@ -591,5 +591,31 @@ button>span {
     100% {
         top: 0;
         transform: translate(-50%, -100%);
+    }
+}
+
+.no-phone {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.471);
+    backdrop-filter: var(--blur-soft);
+    height: 100vh;
+    width: 100vw;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-grey);
+    gap: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+
+}
+
+@media (min-width: 1000px) {
+    .no-phone {
+        display: none;
     }
 }
